@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-02-2018 a las 21:26:08
+-- Tiempo de generación: 01-03-2018 a las 21:56:32
 -- Versión del servidor: 5.6.17-log
 -- Versión de PHP: 5.5.12
 
@@ -28,6 +28,7 @@ USE `idiomas`;
 -- Estructura de tabla para la tabla `administrador`
 --
 
+DROP TABLE IF EXISTS `administrador`;
 CREATE TABLE IF NOT EXISTS `administrador` (
   `idadministrador` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_administrador` varchar(100) NOT NULL,
@@ -44,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 -- Estructura de tabla para la tabla `calificacion`
 --
 
+DROP TABLE IF EXISTS `calificacion`;
 CREATE TABLE IF NOT EXISTS `calificacion` (
   `idcalificacion` int(11) NOT NULL AUTO_INCREMENT,
   `unidad` tinyint(3) unsigned NOT NULL,
@@ -59,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `calificacion` (
 -- Estructura de tabla para la tabla `carrera`
 --
 
+DROP TABLE IF EXISTS `carrera`;
 CREATE TABLE IF NOT EXISTS `carrera` (
   `idcarrera` int(11) NOT NULL AUTO_INCREMENT,
   `siglas` varchar(45) NOT NULL,
@@ -72,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `carrera` (
 -- Estructura de tabla para la tabla `curso`
 --
 
+DROP TABLE IF EXISTS `curso`;
 CREATE TABLE IF NOT EXISTS `curso` (
   `idcurso` int(11) NOT NULL AUTO_INCREMENT,
   `nivel_curso` tinyint(3) unsigned NOT NULL,
@@ -92,6 +96,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
 -- Estructura de tabla para la tabla `docente`
 --
 
+DROP TABLE IF EXISTS `docente`;
 CREATE TABLE IF NOT EXISTS `docente` (
   `iddocente` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_docente` varchar(150) NOT NULL,
@@ -99,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
   PRIMARY KEY (`iddocente`),
   UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
   KEY `fk_docente_usuario1_idx` (`idusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -107,6 +112,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
 -- Estructura de tabla para la tabla `estudiante`
 --
 
+DROP TABLE IF EXISTS `estudiante`;
 CREATE TABLE IF NOT EXISTS `estudiante` (
   `idestudiante` int(11) NOT NULL AUTO_INCREMENT,
   `no_control` varchar(45) DEFAULT NULL,
@@ -118,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `estudiante` (
   UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
   KEY `fk_estudiante_carrera_idx` (`idcarrera`),
   KEY `fk_estudiante_usuario1_idx` (`idusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -126,17 +132,21 @@ CREATE TABLE IF NOT EXISTS `estudiante` (
 -- Estructura de tabla para la tabla `exa_toeic`
 --
 
+DROP TABLE IF EXISTS `exa_toeic`;
 CREATE TABLE IF NOT EXISTS `exa_toeic` (
   `idexa_TOEIC` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_toeic` date NOT NULL,
+  `acta` int(10) unsigned DEFAULT NULL,
+  `semestre` tinyint(3) unsigned NOT NULL,
   `puntos_toeic` int(10) unsigned NOT NULL,
-  `acta` int(10) unsigned NOT NULL,
-  `anyo` int(10) unsigned NOT NULL,
-  `calificacion_toeic` tinyint(3) unsigned DEFAULT NULL,
+  `porcentaje_toeic` tinyint(3) unsigned DEFAULT NULL,
+  `porcentaje_articulo` tinyint(3) unsigned DEFAULT NULL,
+  `porcentaje_final` tinyint(3) unsigned DEFAULT NULL,
+  `situacion` enum('APROBADO','NO APROBADO') DEFAULT NULL,
   `idestudiante` int(11) NOT NULL,
   PRIMARY KEY (`idexa_TOEIC`),
   KEY `fk_exa_TOEIC_estudiante1_idx` (`idestudiante`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -144,6 +154,7 @@ CREATE TABLE IF NOT EXISTS `exa_toeic` (
 -- Estructura de tabla para la tabla `exa_ubicacion`
 --
 
+DROP TABLE IF EXISTS `exa_ubicacion`;
 CREATE TABLE IF NOT EXISTS `exa_ubicacion` (
   `idexa_ubicacion` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_ubi` date NOT NULL,
@@ -153,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `exa_ubicacion` (
   `idestudiante` int(11) NOT NULL,
   PRIMARY KEY (`idexa_ubicacion`),
   KEY `fk_exa_ubicacion_estudiante1_idx` (`idestudiante`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -161,6 +172,7 @@ CREATE TABLE IF NOT EXISTS `exa_ubicacion` (
 -- Estructura de tabla para la tabla `inscripcion`
 --
 
+DROP TABLE IF EXISTS `inscripcion`;
 CREATE TABLE IF NOT EXISTS `inscripcion` (
   `idinscripcion` int(11) NOT NULL AUTO_INCREMENT,
   `idestudiante` int(11) NOT NULL,
@@ -176,13 +188,14 @@ CREATE TABLE IF NOT EXISTS `inscripcion` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
+DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
   `alias` varchar(100) NOT NULL,
   `contrasena` varchar(100) NOT NULL,
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `alias_UNIQUE` (`alias`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Restricciones para tablas volcadas
