@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2018 a las 21:56:32
+-- Tiempo de generación: 29-06-2018 a las 18:13:21
 -- Versión del servidor: 5.6.17-log
 -- Versión de PHP: 5.5.12
 
@@ -17,239 +17,231 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `idiomas`
+-- Base de datos: 'idiomas'
 --
-CREATE DATABASE IF NOT EXISTS `idiomas` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `idiomas`;
+CREATE DATABASE IF NOT EXISTS idiomas DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE idiomas;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administrador`
+-- Estructura de tabla para la tabla 'administrador'
 --
 
-DROP TABLE IF EXISTS `administrador`;
-CREATE TABLE IF NOT EXISTS `administrador` (
-  `idadministrador` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_administrador` varchar(100) NOT NULL,
-  `cargo` varchar(100) NOT NULL,
-  `idusuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idadministrador`),
-  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
-  KEY `fk_administrador_usuario1_idx` (`idusuario`)
+CREATE TABLE IF NOT EXISTS administrador (
+  idadministrador int(11) NOT NULL AUTO_INCREMENT,
+  nombre_administrador varchar(100) NOT NULL,
+  cargo varchar(100) NOT NULL,
+  idusuario int(11) DEFAULT NULL,
+  PRIMARY KEY (idadministrador),
+  UNIQUE KEY idusuario_UNIQUE (idusuario),
+  KEY fk_administrador_usuario1_idx (idusuario)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `calificacion`
+-- Estructura de tabla para la tabla 'calificacion'
 --
 
-DROP TABLE IF EXISTS `calificacion`;
-CREATE TABLE IF NOT EXISTS `calificacion` (
-  `idcalificacion` int(11) NOT NULL AUTO_INCREMENT,
-  `unidad` tinyint(3) unsigned NOT NULL,
-  `calificacion` tinyint(3) unsigned NOT NULL,
-  `idinscripcion` int(11) NOT NULL,
-  PRIMARY KEY (`idcalificacion`),
-  KEY `fk_calificacion_inscripcion1_idx` (`idinscripcion`)
+CREATE TABLE IF NOT EXISTS calificacion (
+  idcalificacion int(11) NOT NULL AUTO_INCREMENT,
+  unidad tinyint(3) unsigned NOT NULL,
+  calificacion tinyint(3) unsigned NOT NULL,
+  idinscripcion int(11) NOT NULL,
+  PRIMARY KEY (idcalificacion),
+  KEY fk_calificacion_inscripcion1_idx (idinscripcion)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carrera`
+-- Estructura de tabla para la tabla 'carrera'
 --
 
-DROP TABLE IF EXISTS `carrera`;
-CREATE TABLE IF NOT EXISTS `carrera` (
-  `idcarrera` int(11) NOT NULL AUTO_INCREMENT,
-  `siglas` varchar(45) NOT NULL,
-  `carrera` varchar(100) NOT NULL,
-  PRIMARY KEY (`idcarrera`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+CREATE TABLE IF NOT EXISTS carrera (
+  idcarrera int(11) NOT NULL AUTO_INCREMENT,
+  siglas varchar(45) NOT NULL,
+  carrera varchar(100) NOT NULL,
+  PRIMARY KEY (idcarrera)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `curso`
+-- Estructura de tabla para la tabla 'curso'
 --
 
-DROP TABLE IF EXISTS `curso`;
-CREATE TABLE IF NOT EXISTS `curso` (
-  `idcurso` int(11) NOT NULL AUTO_INCREMENT,
-  `nivel_curso` tinyint(3) unsigned NOT NULL,
-  `periodo_inicio` date NOT NULL,
-  `periodo_fin` date NOT NULL,
-  `hora_inicio` time DEFAULT NULL,
-  `hora_fin` time DEFAULT NULL,
-  `semestre` varchar(100) NOT NULL,
-  `sistema` varchar(45) DEFAULT NULL,
-  `iddocente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idcurso`),
-  KEY `fk_curso_docente1_idx` (`iddocente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+CREATE TABLE IF NOT EXISTS curso (
+  idcurso int(11) NOT NULL AUTO_INCREMENT,
+  nivel_curso tinyint(3) unsigned NOT NULL,
+  periodo_inicio date NOT NULL,
+  periodo_fin date NOT NULL,
+  hora_inicio time DEFAULT NULL,
+  hora_fin time DEFAULT NULL,
+  semestre varchar(100) NOT NULL,
+  sistema varchar(45) DEFAULT NULL,
+  iddocente int(11) DEFAULT NULL,
+  PRIMARY KEY (idcurso),
+  KEY fk_curso_docente1_idx (iddocente)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `docente`
+-- Estructura de tabla para la tabla 'docente'
 --
 
-DROP TABLE IF EXISTS `docente`;
-CREATE TABLE IF NOT EXISTS `docente` (
-  `iddocente` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_docente` varchar(150) NOT NULL,
-  `idusuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`iddocente`),
-  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
-  KEY `fk_docente_usuario1_idx` (`idusuario`)
+CREATE TABLE IF NOT EXISTS docente (
+  iddocente int(11) NOT NULL AUTO_INCREMENT,
+  nombre_docente varchar(150) NOT NULL,
+  idusuario int(11) DEFAULT NULL,
+  PRIMARY KEY (iddocente),
+  UNIQUE KEY idusuario_UNIQUE (idusuario),
+  KEY fk_docente_usuario1_idx (idusuario)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estudiante`
+-- Estructura de tabla para la tabla 'estudiante'
 --
 
-DROP TABLE IF EXISTS `estudiante`;
-CREATE TABLE IF NOT EXISTS `estudiante` (
-  `idestudiante` int(11) NOT NULL AUTO_INCREMENT,
-  `no_control` varchar(45) DEFAULT NULL,
-  `nombre` varchar(150) NOT NULL,
-  `idcarrera` int(11) DEFAULT NULL,
-  `idusuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idestudiante`),
-  UNIQUE KEY `no_control_UNIQUE` (`no_control`),
-  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
-  KEY `fk_estudiante_carrera_idx` (`idcarrera`),
-  KEY `fk_estudiante_usuario1_idx` (`idusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+CREATE TABLE IF NOT EXISTS estudiante (
+  idestudiante int(11) NOT NULL AUTO_INCREMENT,
+  no_control varchar(45) DEFAULT NULL,
+  nombre varchar(150) NOT NULL,
+  idcarrera int(11) DEFAULT NULL,
+  idusuario int(11) DEFAULT NULL,
+  genero varchar(20) DEFAULT NULL,
+  PRIMARY KEY (idestudiante),
+  UNIQUE KEY no_control_UNIQUE (no_control),
+  UNIQUE KEY idusuario_UNIQUE (idusuario),
+  KEY fk_estudiante_carrera_idx (idcarrera),
+  KEY fk_estudiante_usuario1_idx (idusuario)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1847 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `exa_toeic`
+-- Estructura de tabla para la tabla 'exa_toeic'
 --
 
-DROP TABLE IF EXISTS `exa_toeic`;
-CREATE TABLE IF NOT EXISTS `exa_toeic` (
-  `idexa_TOEIC` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_toeic` date NOT NULL,
-  `acta` int(10) unsigned DEFAULT NULL,
-  `semestre` tinyint(3) unsigned NOT NULL,
-  `puntos_toeic` int(10) unsigned NOT NULL,
-  `porcentaje_toeic` tinyint(3) unsigned DEFAULT NULL,
-  `porcentaje_articulo` tinyint(3) unsigned DEFAULT NULL,
-  `porcentaje_final` tinyint(3) unsigned DEFAULT NULL,
-  `situacion` enum('APROBADO','NO APROBADO') DEFAULT NULL,
-  `idestudiante` int(11) NOT NULL,
-  PRIMARY KEY (`idexa_TOEIC`),
-  KEY `fk_exa_TOEIC_estudiante1_idx` (`idestudiante`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+CREATE TABLE IF NOT EXISTS exa_toeic (
+  idexa_TOEIC int(11) NOT NULL AUTO_INCREMENT,
+  fecha_toeic date NOT NULL,
+  acta int(10) unsigned DEFAULT NULL,
+  semestre tinyint(3) unsigned NOT NULL,
+  puntos_toeic int(10) unsigned NOT NULL,
+  porcentaje_toeic tinyint(3) unsigned DEFAULT NULL,
+  porcentaje_articulo tinyint(3) unsigned DEFAULT NULL,
+  porcentaje_final tinyint(3) unsigned DEFAULT NULL,
+  situacion enum('APROBADO','NO APROBADO') DEFAULT NULL,
+  idestudiante int(11) NOT NULL,
+  PRIMARY KEY (idexa_TOEIC),
+  KEY fk_exa_TOEIC_estudiante1_idx (idestudiante)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `exa_ubicacion`
+-- Estructura de tabla para la tabla 'exa_ubicacion'
 --
 
-DROP TABLE IF EXISTS `exa_ubicacion`;
-CREATE TABLE IF NOT EXISTS `exa_ubicacion` (
-  `idexa_ubicacion` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_ubi` date NOT NULL,
-  `nivel_ubi` tinyint(3) unsigned NOT NULL,
-  `puntos_ubi` int(10) unsigned NOT NULL,
-  `no_recibo` varchar(45) NOT NULL,
-  `idestudiante` int(11) NOT NULL,
-  PRIMARY KEY (`idexa_ubicacion`),
-  KEY `fk_exa_ubicacion_estudiante1_idx` (`idestudiante`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+CREATE TABLE IF NOT EXISTS exa_ubicacion (
+  idexa_ubicacion int(11) NOT NULL AUTO_INCREMENT,
+  fecha_ubi date NOT NULL,
+  nivel_ubi tinyint(3) unsigned NOT NULL,
+  puntos_ubi int(10) unsigned NOT NULL,
+  no_recibo varchar(45) NOT NULL,
+  idestudiante int(11) NOT NULL,
+  PRIMARY KEY (idexa_ubicacion),
+  KEY fk_exa_ubicacion_estudiante1_idx (idestudiante)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inscripcion`
+-- Estructura de tabla para la tabla 'inscripcion'
 --
 
-DROP TABLE IF EXISTS `inscripcion`;
-CREATE TABLE IF NOT EXISTS `inscripcion` (
-  `idinscripcion` int(11) NOT NULL AUTO_INCREMENT,
-  `idestudiante` int(11) NOT NULL,
-  `idcurso` int(11) NOT NULL,
-  PRIMARY KEY (`idinscripcion`),
-  KEY `fk_inscripcion_estudiante1_idx` (`idestudiante`),
-  KEY `fk_inscripcion_curso1_idx` (`idcurso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+CREATE TABLE IF NOT EXISTS inscripcion (
+  idinscripcion int(11) NOT NULL AUTO_INCREMENT,
+  idestudiante int(11) NOT NULL,
+  idcurso int(11) NOT NULL,
+  PRIMARY KEY (idinscripcion),
+  UNIQUE KEY restriccion_ins (idestudiante,idcurso),
+  KEY fk_inscripcion_estudiante1_idx (idestudiante),
+  KEY fk_inscripcion_curso1_idx (idcurso)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla 'usuario'
 --
 
-DROP TABLE IF EXISTS `usuario`;
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `idusuario` int(11) NOT NULL AUTO_INCREMENT,
-  `alias` varchar(100) NOT NULL,
-  `contrasena` varchar(100) NOT NULL,
-  PRIMARY KEY (`idusuario`),
-  UNIQUE KEY `alias_UNIQUE` (`alias`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+CREATE TABLE IF NOT EXISTS usuario (
+  idusuario int(11) NOT NULL AUTO_INCREMENT,
+  alias varchar(100) NOT NULL,
+  contrasena varchar(100) NOT NULL,
+  PRIMARY KEY (idusuario),
+  UNIQUE KEY alias_UNIQUE (alias)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1847 ;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `administrador`
+-- Filtros para la tabla administrador
 --
-ALTER TABLE `administrador`
-  ADD CONSTRAINT `fk_administrador_usuario1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE administrador
+  ADD CONSTRAINT fk_administrador_usuario1 FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `calificacion`
+-- Filtros para la tabla calificacion
 --
-ALTER TABLE `calificacion`
-  ADD CONSTRAINT `fk_calificacion_inscripcion1` FOREIGN KEY (`idinscripcion`) REFERENCES `inscripcion` (`idinscripcion`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE calificacion
+  ADD CONSTRAINT fk_calificacion_inscripcion1 FOREIGN KEY (idinscripcion) REFERENCES inscripcion (idinscripcion) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `curso`
+-- Filtros para la tabla curso
 --
-ALTER TABLE `curso`
-  ADD CONSTRAINT `fk_curso_docente1` FOREIGN KEY (`iddocente`) REFERENCES `docente` (`iddocente`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE curso
+  ADD CONSTRAINT fk_curso_docente1 FOREIGN KEY (iddocente) REFERENCES docente (iddocente) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `docente`
+-- Filtros para la tabla docente
 --
-ALTER TABLE `docente`
-  ADD CONSTRAINT `fk_docente_usuario1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE docente
+  ADD CONSTRAINT fk_docente_usuario1 FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `estudiante`
+-- Filtros para la tabla estudiante
 --
-ALTER TABLE `estudiante`
-  ADD CONSTRAINT `fk_estudiante_carrera` FOREIGN KEY (`idcarrera`) REFERENCES `carrera` (`idcarrera`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_estudiante_usuario1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE estudiante
+  ADD CONSTRAINT fk_estudiante_carrera FOREIGN KEY (idcarrera) REFERENCES carrera (idcarrera) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT fk_estudiante_usuario1 FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `exa_toeic`
+-- Filtros para la tabla exa_toeic
 --
-ALTER TABLE `exa_toeic`
-  ADD CONSTRAINT `fk_exa_TOEIC_estudiante1` FOREIGN KEY (`idestudiante`) REFERENCES `estudiante` (`idestudiante`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE exa_toeic
+  ADD CONSTRAINT fk_exa_TOEIC_estudiante1 FOREIGN KEY (idestudiante) REFERENCES estudiante (idestudiante) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `exa_ubicacion`
+-- Filtros para la tabla exa_ubicacion
 --
-ALTER TABLE `exa_ubicacion`
-  ADD CONSTRAINT `fk_exa_ubicacion_estudiante1` FOREIGN KEY (`idestudiante`) REFERENCES `estudiante` (`idestudiante`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE exa_ubicacion
+  ADD CONSTRAINT fk_exa_ubicacion_estudiante1 FOREIGN KEY (idestudiante) REFERENCES estudiante (idestudiante) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `inscripcion`
+-- Filtros para la tabla inscripcion
 --
-ALTER TABLE `inscripcion`
-  ADD CONSTRAINT `fk_inscripcion_curso1` FOREIGN KEY (`idcurso`) REFERENCES `curso` (`idcurso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_inscripcion_estudiante1` FOREIGN KEY (`idestudiante`) REFERENCES `estudiante` (`idestudiante`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE inscripcion
+  ADD CONSTRAINT fk_inscripcion_curso1 FOREIGN KEY (idcurso) REFERENCES curso (idcurso) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT fk_inscripcion_estudiante1 FOREIGN KEY (idestudiante) REFERENCES estudiante (idestudiante) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
