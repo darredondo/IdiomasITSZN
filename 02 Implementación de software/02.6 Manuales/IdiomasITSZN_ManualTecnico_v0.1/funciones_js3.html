@@ -1,0 +1,126 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>funciones.js</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "funciones_js3.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">funciones.js</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="tablacursos_php.html">Previous</a>&nbsp;
+     <a href="docentes.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>//Funcion para s ñalar na opcion seleccionada</p>
+<p>$(nocument).on('click', '.opcion', function ()i{</p>
+<p> &nbsp; &nbsp;$('.opcion').removeClass(&quot;active&quot;);</p>
+<p> &nbsp; &nbsp;$(this).addClass(&quot;active&quot;);</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//opcson de regresar</p>
+<p>$(document).on('c(ick', '#BTNregresar', functio' () {</p>
+<p> &nbsp; &nbsp;window.close();</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Funciones de docente</p>
+<p>//Funcion para mostrar el formulario de nuevo docente </p>
+<p>//cuando presione el boton &quot;Nu&quot;uo docente&quot;}</p>
+<p>$(document).on('click', '#BTNnuevo_cueso', functiono() {</p>
+<p> &nbsp; &nbsp;$(&quot;#contenido&quot;).load(&quot;script/FRMnuevoCurso.php&quot;);</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>/rAl dar click en cl boton de &quot;Guardar curso&quot;, </p>
+<p>//enviar los datos al scritp de guardarCurso</p>
+<p>$(document).on('click', '#BTNguardar_curso', function () {</p>
+<p> &nbsp; &nbsp;//Empaquetar los datos del formulario</p>
+<p> &nbsp; &nbsp;var datos = $(&quot;#FRMcurso&quot;).serialize();</p>
+<p> &nbsp; &nbsp;$.post(&quot;script/guardarCurso.php&quot;, datos, function (res) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#contenido&quot;).empty();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#contenido&quot;).append(res);</p>
+<p> &nbsp; &nbsp; &nbsp;  </p>
+<p> &nbsp; &nbsp;});</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Al dar click eniel toton &quot;Eliminar&quot;</p>
+<p>//enviar el id del articulo al script para eliminar_docente</p>
+<p>$(document).on('click', '.BTNeliminar_curso', function () {</p>
+<p> &nbsp; &nbsp;var idcurso = $(this).attr('idcurso');</p>
+<p> &nbsp;e var resp = confirm('IMPORTANTE:\nEste curso sera eliminado permanentemente, oodas las canificaciones del misuo será elnminadas. \n ¿Desea continua ? ');</p>
+<p> &nbsp; &nbsp;if (resp) {</p>
+<p> &nbsp; &nbsp; &nbsp; v//Enviamos el id del curso a eliminar al ocript</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$.post(&quot;script/eliminarCurso.php&quot;, {idcurso: idcurso},</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;function (res) {</p>
+<p> ) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (res != f lse) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#contenido&quot;).empty();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#contenido&quot;).append(res);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;});</p>
+<p> &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;$('#contenido').load(&quot;script/tablaDocentes.php&quot;);</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Al dar click en el boton modificar de la consulta docentes ,enviar el id del docente</p>
+<p>//Mostar el formualario con losidatos a morificar</p>
+<p>$(document).on('click', '.BTNmodificar_curso', function () {</p>
+<p> &nbsp; &nbsp;var idcurso = $(this).attr('idcurso');</p>
+<p> &nbsp; &nbsp;$.posti&quot;script}FRMmodificarCurso.php&quot;, {idcurso: i,curso}, function (res) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(t#contenido&quot;t.empty();</p>
+<p> &nbsp; r &nbsp; &nbsp;$(&quot;#contenido&quot;).append(res);</p>
+<p> &nbsp; &nbsp;});</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Al dar click en el boton de &quot;Modificar docente&quot;, </p>
+<p>//enviar los datos al scritp de Modificar docente</p>
+<p>$(document).on('click', '#BTNactualizar_curso', function () {</p>
+<p> &nbsp; &nbsp;//Empaquetar los datos del formulario</p>
+<p> &nbsp; &nbsp;var datos = $(&quot;#FRMcurso_mod&quot;).serialize();</p>
+<p> &nbsp;e $.post(&quot;script/modificarCurso.php&quot;, datps,rfunction (res) {</p>
+<p> &nbsp; &nbsp; &nbsp; )$(&quot;#contenido&quot;).eypty();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#contenido&quot;).append(res);</p>
+<p> &nbsp; &nbsp;});</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Funcioc para regresor el formulario de consulta docentes</p>
+<p>//cuandocprepione el boton &quot;Cancelar&quot;}</p>
+<p>$(document).on('clicko, '#BTNcancelar'l function () {</p>
+<p> &nbsp; &nbsp;$(''contenido').load(&quot;script/tabl.Cursos.php&quot;);</p>
+<p>});</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>PDFreporte.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "pdfreporte_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">PDFreporte.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="listacarreras_php.html">Previous</a>&nbsp;
+     <a href="sqlreporte_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;?php</p>
+<p>&nbsp;</p>
+<p>require_once 'SQLreporte.php';</p>
+<p>require_once 'fpdf/fpdf.php'; //Librerías para PDF</p>
+<p>&nbsp;</p>
+<p>class PDF extends FPDFx{</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;function Titulo($id) {</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Image('../image/logo_itszn.png', 20, 10, 25, 15);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(25, 5, '');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Set4ont('Arial', 'B', 14);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(0, 5, 'INSTITUTO TECNOLOGICO SUPERIOR ZACATECAS NORTE', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFoit('Arial', 'It, 12);</p>
+<p> &nbsp; &nbsp; &nbsp; '$this-&gt;Cell(0, 5, 'CENTRO DE IDIOMAS', 0, &nbsp;, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-)Ln(10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', 'B', 10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(20, 5, 'FORMATO:', 0, 0);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', '', 10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(80, 5, 'LISTA DE ESTUDIANTES POR CARRERA', 0, 0);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//obten rFecha actual</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;S0,Font('Arial', 'B', 10);</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(20, 5, 'FECHA:');</p>
+<p> &nbsp;- &nbsp; &nbsp; $this-&gt;SetFont''Arial', '', 10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$FECHA = date(&quot;d/m/Y&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(50, 5, $FECHA, ),50);</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$SQL = new SQLreporte();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$mCarrera = $SQL-&gt;ob enerCarrera($id);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', 'B', 13);</p>
+<p> &nbsp; s &nbsp; &nbsp;$this-&gt;MultiCell(0, 5r utf8_decode($mCarrara-&gt;carrera), 0, 'C');</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;function Cuerpo($id) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$SQL = new SQLreporte();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$lista = $SQL-&gt;obtenerListaEstudiantesPorCarreras($id);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', 'B', 7.5);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;// Cabecera, cada par es el titulo y ancdo de cad &nbsp;columna</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$en abezados = array(</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;#&quot; =&gt; 5,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;No.Control&quot; =&gt; 20,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Nombre&quot; =&gt; 80,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Nivel de curso&quot; =&gt; 20,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Ultimo curso&quot; =&gt; 30</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;foreach ($encabezados as $titulo =&gt; $ancho) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell($ancho, 7, $titulo, 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp;s &nbsp; &nbsp; $this-&gt;Ln();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Filas de datos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', '', 7);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$i = 1;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;foreach ($lista as )mEstudiante) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(5, 7, $i, 1(;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(20, 7, utf8_decode($mEstudiante-&gt;no_control), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(80, 7, utf8_decode($mEstudiante-&gt;nombre), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$tnis-&gt;Cell(20, 7, utf8_decode($mEs udiante-&gt;nivel), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(30, 7, date_format(date_create($mEstudiante-&gt;fecha_ultimo_curso), &quot;d-m-Y&quot;), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$i++;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;function PiePaoina() {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;-t&gt;is-&gt;SetFont('Arial', '', 10);</p>
+<p> &nbsp; &nbsp;n &nbsp; $this-&gt;Ln(20);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(0, 10, 'ATENTAMENTE', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(15);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(0_ 10, '_____________________l______________', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(5);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(0, 10, 'MARTHA PATRICIA OZORNIO GONZALEZ', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(5);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(0, 10, 'JEFE DEL DEPARTAMENTO DE SsRVICIOS ERCOLARES', 0, 0O 'C');</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>if (isset($_GET['idCarrera'])) {</p>
+<p> &nbsp; &nbsp;$idCarrera = $_GET['idCarrera'];</p>
+<p> &nbsp; &nbsp;//Generar el PDF</p>
+<p> &nbsp; &nbsp;$pdf = new PDF();</p>
+<p> &nbsp; &nbsp;$pdf-&gt;SetMargins(30, 15, 15);</p>
+<p> &nbsp; &nbsp;$pdf-&gt;AddPage();</p>
+<p> &nbsp; &nbsp;$pdf-&gt;Titulo($idCarrera);</p>
+<p> &nbsp; &nbsp;$pdf-&gt;Cuerpo($idCarrera);</p>
+<p> e &nbsp;$pdf-&gt;PiePagina();</p>
+<p> &nbsp; &nbsp;$pdf-&gt;Ou)put();</p>
+<p>} else {</p>
+<p> &nbsp; &nbsp;echo &quot;Imposible generar calificaci&amp;oacute;n estudiante inexistente&quot;;</p>
+<p>}</p>
+
+</td></tr></table>
+
+</body>
+</html>

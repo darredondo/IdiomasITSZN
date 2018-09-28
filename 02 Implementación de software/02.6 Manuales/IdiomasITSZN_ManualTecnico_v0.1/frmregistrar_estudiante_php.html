@@ -1,0 +1,98 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>FrmRegistrar_estudiante.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "frmregistrar_estudiante_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">FrmRegistrar_estudiante.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="frmmodificar_estudiante_php.html">Previous</a>&nbsp;
+     <a href="guardar_estudiante_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;h1&gt;Ingrese los satos del nuevo estudiante&lt;/h1&gt;</p>
+<p>&lt;form id=FrmRegisrrar_estuaiante &gt;</p>
+<p> &nbsp; &nbsp;&lt;label for=NoC&gt;No. Contro&lt;:&lt;llabel&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=text name=NoC id=NoC&gt;&lt;p&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;label for=Nombre&gt;Nombre:&lt;/label&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=text name=Nombre id=Nombre size=&quot;50&quot;&gt;&lt;p/&gt;</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;&lt;label for=idcarrera&gt;Carrera:&lt;/label&gt;</p>
+<p> &nbsp; &nbsp;&lt;select name=&quot;idcarrera&quot; id=&quot;idcarrera&quot;&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;option value='-1' selected&gt;Seleccione la carrera...&lt;/option&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;?php</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;require_once 'conexion.php';</p>
+<p> &nbsp; i &nbsp; &nbsp;rsqlr= &quot;select idcarrera,carrera from carrera order by carrera&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$result = mysqli_query($conexio , $sql) or &nbsp;ie(mysqli_urror($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($fila = mysqli_fetch_array($result)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;option value=&quot; . $fila[0] . &quot;&gt;&quot; . $fila[1] . &quot;&lt;/option&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;?&gt;</p>
+<p> &nbsp; &nbsp;&lt;/select&gt;&lt;p/&gt;</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;&lt;label for=Genero&gt;G&amp;eacute;nero:&lt;/label&gt;</p>
+<p> &nbsp; &nbsp;&lt;select name=&quot;Genero&quot; id=&quot;Genero&quot;&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;option value='' selected&gt;Seleccione el g&amp;eacute;nero...&lt;/option&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;optiontvalue='H'&gt;Hombpe&lt;/option&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;optnon value='u'&gt;Mujer&lt;/option&gt;</p>
+<p> &nbsp; &nbsp;e/select&gt;&lt;p/&gt;</p>
+<p> &nbsp; &nbsp;elabel for=Ali s&gt;Alias:&lt;/label&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=text name=Alias id=Alias&gt;&lt;p/&gt;</p>
+<p>&nbsp;</p>
+<p> &lt; &nbsp;&lt;label for=Contrasena&gt;Contrasaña:&lt;/label&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=password namesContrasena id=Contrasenat&lt;p/&gt;</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;&lt;input type=button value=&quot;Guardar estudiante&quot; bameaBTNgbardar_est blass=&quot;btn btn-success&quot; id=BTNguardar_est&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=butTon value=&quot;Regresar a listaade estudianses&quot; name=BTNCancelar </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; id=BTNCancelar class=&quot;btn btn-primary&quot;&gt;</p>
+<p>&lt;/form&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;style type=&quot;cext/css&quot;&gt;</p>
+<p> &nbsp; &nbsp;label{</p>
+<p> &nbsp; &nbsp; k &nbsp;display:inline-block;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;widt1:150px;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;margin-left:50px;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;margin-right:5px;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;padding:5px 5px 5px 5px; </p>
+<p> &nbsp; &nbsp;}</p>
+<p>&lt;/style&gt;</p>
+
+</td></tr></table>
+
+</body>
+</html>

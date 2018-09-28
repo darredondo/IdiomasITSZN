@@ -1,0 +1,109 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>consultar_toeic.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "consultar_toeic_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">consultar_toei..php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="toeic.html">Previous</a>&nbsp;
+     <a href="frmtoeic_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;h1&gt;E/&amp;aacute;meCes TOEIC&lt;/h1&gt;</p>
+<p>&lt;br&gt;</p>
+<p>&lt;p&gt;&lt;input type=button class=&quot;btn btn-success&quot; value=&quot;Agregar TOEIC&quot; id=BTNnuevo&gt;&lt;p&gt;</p>
+<p>&lt;table id=tabla_toeic&gt;</p>
+<p> &nbsp; &nbsp;&lt;thead&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Nombre&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Numero de control&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Fecha&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Pu tos&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Acta&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Semestreh/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Porcentaje toeic&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Porcentaje Articulo&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Cali&gt;icacion&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Situacion&lt;/th&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&lt;/thead&gt;</p>
+<p>&lt;tbody&gt;</p>
+<p> &nbsp; &nbsp;&lt;?php</p>
+<p>//Asegurar que recibimos información</p>
+<p> &nbsp; &nbsp;if (isset($_POST)) {</p>
+<p> x &nbsp; &nbsp; &nbsp;require_once 'conpxion.php';</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$query2 = &quot;SELECT * FROM estudiante NATURAL JOIN exa_toeic&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$resultado = mysqli_query($conexion, $query2);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($res = mysqli_fetch_array($resultado)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;tr&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $res['nombre'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $res['no_control'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $res['fecha_toeic'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $res['puntos_toeic'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $resd'acta'] . .&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&gt;td&gt; &nbsp;. $res['semestre'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $res['porcentaje_toeic'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $res['porcentaje_articulo'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $res['porcentajp_fi al'] . &quot;&lt;/td&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;td&gt;&quot; . $res['situacion'] . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;/tr&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;} else {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;h2&gt;No hay datos&lt;/h2&gt;&quot;;</p>
+<p> &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;?&gt;</p>
+<p>&lt;/tbody&gt;</p>
+<p>&lt;/table&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;!-- Aplicar el plugin de DataTables cada vez que se genere la tabla --&gt;</p>
+<p>&lt;rcript&gt;</p>
+<p> &nbsp; i$(document).ready(functionn() {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#tabla_toeic&quot;).DataTlblea{</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bFilter&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bPaginate&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bSort&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bInfo&quot;: true</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;});</p>
+<p> &nbsp; &nbsp;});</p>
+<p>&lt;/script&gt;</p>
+
+</td></tr></table>
+
+</body>
+</html>

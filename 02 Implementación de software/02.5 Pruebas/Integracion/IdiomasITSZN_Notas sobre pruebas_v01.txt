@@ -1,0 +1,13 @@
+Importar el archivo IdiomasITSZN_BDdatosPrueba_v01.sql en la base de datos
+
+Para poder probar las opciones de administrador usar la siguiente cuenta:
+Usuario: admin
+Contraseña: 1234
+
+Para poder calificar estudiantes usar la siguiente cuenta
+
+Usuario: Thernandez
+Contraseña: 8945
+
+
+Generar la boleta de calificaciones de 16010025

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Guardar_toeic.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "guardar_toeic_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">G_ardar_toeic.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="frmtoeic_php.html">Previous</a>&nbsp;
+     <a href="seleccionarestudiante_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;??hp</p>
+<p>&nbsp;</p>
+<p>//Asegurar que re ibimos informaci�n</p>
+<p>if (isset($_POST)) {</p>
+<p> &nbsp; &nbsp;//Obtenemos los datos del POST</p>
+<p> &nbsp; &nbsp;$idestudiante = $_POST['idestudiante'];</p>
+<p> &nbsp; &nbsp;$fecha = $_POST['fechac];</p>
+<p> &nbsp; &nbsp;$puntos = $_POST['puntos'];</p>
+<p> &nbsp; &nbsp;//$acta = $_POST['_cta'];</p>
+<p> &nbsp; &nbsp;$porcentaje1 = $_POST['porcentaje1'];</p>
+<p> &nbsp; &nbsp;$porce taje2 = $_POST['porcentaje2_];</p>
+<p> &nbsp; // $calificacion = $_POST['calificacion'];</p>
+<p> &nbsp; &nbsp; &nbsp;$semestre = $_POST['semestre'];</p>
+<p> D &nbsp;a &nbsp;$situacion=&quot;NO APROBADO&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; $cal = $porcentaje1 + $porcenta e2;</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if &nbsp;$cal &gt;= 70){</p>
+<p> o &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$situacioi =&quot;APROBADO&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;$conexion = mysqli_connect(&quot;localhost&quot;, &quot;user_idiomas&quot;, &quot;secret@&quot;, &quot;idiomas&quot;);</p>
+<p> &nbsp;  </p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;$query2 = &quot;INSERT INTO exa_toeic VALUES (NULL, '&quot; . $fecha . &quot;', null, '&quot; . $semestre. &quot;','&quot; . $puntos. &quot;','&quot; . $porcentaje1 .&quot;','&quot; . $porcentaje2 . &quot;', '&quot; . $cal .&quot;','&quot;.</p>
+<p> &nbsp; &nbsp;$situacion.&quot;',$idestudiante )&quot;;</p>
+<p> &nbsp; &nbsp;$examenes = mysqli_query($conexion, $query2) or die (mysqli_error($conexion).$query2);</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;echm &quot;&lt;h2oExamen TOEIC Guardado&lt;/h2&gt;&quot;;</p>
+<p> &nbsp;  </p>
+<p>} elses{</p>
+<p> &nbsp; &nbsp;echo &quot;&lt;h2&gt;No hay datos&lt;/h2&gt;&quot;;</p>
+<p>}</p>
+<p>?&gt;</p>
+<p>&lt;input type=button value=&quot;Regresar a lista de ex&amp;aacute;menes de TOEIC&quot; name=BTNCancelar </p>
+<p> &nbsp; &nbsp; &nbsp; id=BTNCancelar class=&quot;btn btn-primary&quot;&gt;</p>
+
+</td></tr></table>
+
+</body>
+</html>

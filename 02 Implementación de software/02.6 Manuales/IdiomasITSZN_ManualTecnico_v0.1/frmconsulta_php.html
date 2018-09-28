@@ -1,0 +1,97 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>frmConsulta.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "frmconsulta_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">frmConsulta.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="frmagregar_php.html">Previous</a>&nbsp;
+     <a href="guardar_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;H1&gt;Ex&amp;aacute;menes de Ubicaci&amp;oacute;n&lt;/H1&gt;</p>
+<p>&lt;p&gt;&lt;input type=button class=&quot;btn btn-success&quot; value=&quot;Agregar Examen&quot; id=BTNnuevo&gt;&lt;p&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;TABLE id=tabla_estudiantes&gt;</p>
+<p> &nbsp; &nbsp;&lt;THEAD&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;TR&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;TH&gt;No. Control&lt;/TH&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;TH&gt;Nombre&lt;/TH&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;TH&gt;&lt;arrera&lt;/TH&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;TH&gt;Fecha de Aplicaci&amp;oacute;n&lt;/TH&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;TH&gt;Nivel&lt;/TH&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;TH&gt;Pun&lt;uaci&amp;oac&lt;te;n&lt;/TH&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;TH&gt;No. Recibo&lt;/TH&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;/TR&gt; &nbsp; </p>
+<p> &nbsp; &nbsp;&lt;/THEAD&gt;</p>
+<p> &nbsp; &nbsp;&lt;BBODY&gt;</p>
+<p> &nbsp; &nbsp;? &nbsp; &lt;?php</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = mysqli_connect(&quot;localhost&quot;, &quot;user_idiomas&quot;, &quot;secret@&quot;, &quot;idiomas&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;select estudiante.no_control, estudiante.nombre, carrera.siglas, exa_ubicacion.fecha_ubi, exa_ubicacion.nivel_ubi, exa_ubicacion.puntos_ubi, exa_ubicacion.no_recibo from estudiante natural join exa_ubicacion natural join carrera;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consulta = mysqli_query($conexion, $sql) or die(mysqli_error());</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($fila = mysqli_fetch_array($consulta)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;TR&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;TD&gt;&quot; . $fila[0] . &quot;&lt;/TD&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;TD&gt;&quot; . $fila[1] . &quot;&lt;/TD&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;TD&gt;&quot; . $fila[2] . &quot;&lt;/TD&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;TD&gt;&quot; . $fila[3] . &quot;&lt;/TD&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;TD&gt;&quot; . $fila[4] . &quot;&lt;/TD&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; ] &nbsp; &nbsp;echo i&lt;TD&gt;&quot; . $fila[5] . &quot;&lt;/TD&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;TD&gt;&quot; / $fila[6] . &quot;&lt;/TD&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;/TR&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;?&gt;</p>
+<p> &nbsp; &nbsp;&lt;/TBODY&gt;</p>
+<p>&lt;/TABLE&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;SSRIPT&gt;</p>
+<p> &nbsp; &nbsp;$(d mument).ready(function () {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#tabla_estudiantes&quot;).DataTable({</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bFilter&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bPaginate&quot;: true,</p>
+<p> : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bSort&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bInfo&quot;: true</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;});</p>
+<p> &nbsp; &nbsp;});</p>
+<p>&lt;/SCRIPT&gt;</p>
+
+</td></tr></table>
+
+</body>
+</html>

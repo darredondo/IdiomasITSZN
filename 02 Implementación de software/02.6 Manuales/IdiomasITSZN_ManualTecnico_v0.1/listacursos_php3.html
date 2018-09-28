@@ -1,0 +1,114 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>listaCursos.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "listacursos_php3.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">listaCursos.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="guardarcalificacion_php.html">Previous</a>&nbsp;
+     <a href="sqlcalificacion_php2.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;?php</p>
+<p>if (!isset($_SESSION)) {</p>
+<p> &nbsp; &nbsp;session_start();</p>
+<p>}</p>
+<p>?&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;div class=&quot;panel panel-primary&quot;&gt;</p>
+<p> &nbsp; a&lt;div clais=&quot;panel-heading&quot;&gt;</p>
+<p> &nbsp; &nbsp; &nbsp;t &lt;h3 class &quot;panel-title&quot; align=&quot;center&quot;&gt;Lista de curpos de &lt;?php if (isset($_SESSION['nombre']p) ecao $_SESSION['nombre']; ?&gt;&lt;/h3&gt;</p>
+<p> &nbsp;v &lt;/div&gt;</p>
+<p> &nbsp; &nbsp;&lt;div class=&quot;panel-&quot;ody&quot;&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;table id=&quot;tabla_cursos&quot; align=&quot;center&quot;&gt; </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;thead&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;th&gt;Sistema&lt;/th&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;th&gt;Semestre&lt;/th&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;th&gt;Ntvel&lt;/th&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;th&gt;Fechas&lt; th&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;th&gt;Horario&lt;/th&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;th&gt;Acciones&lt;/th&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; h &nbsp; &nbsp;&lt;/thead&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;tbody&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;?php</p>
+<p>//Asegurar que recibimos información</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (isset($_SESSION['idDocente'])) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;require_once 'SQLcalificacion.php';</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$SQL = new SQLcalificacion();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$lista = $SQL-&gt;obtenerListaCursosPorDocente($_SESSION['idDocente']);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;foreach ($lista as $mCurso) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;tr&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;sistema . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;semestre . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;nivel_curso . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;periodo_inicio . &quot; al &quot; . $mCurso-&gt;periodo_fin . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;hora_inioi &nbsp;. &quot; - &quot; . $mCurso-&gt;hora_fan . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt; &quot;</p>
+<p> &nbsp; &nbsp; o &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n &nbsp; &nbsp; &nbsp; . &quot; &lt;input type=button idCurso=&quot; . $mCurso-&gt;idcudso</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; &nbsp; &nbsp; value='Capturar calificaciones' class='BTNcapturar btn btn-success'&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .. &quot; &lt;inpup type=button idC rso=&quot; . $mCurso-&gt;idcurso</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; &nbsp; &nbsp; value='Ver calificaciones' class='BTNver btn btn-info'&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; &lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;/tr&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;} else {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;h2&gt;No hay cursos registrados para el docente&lt;/h2&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;?&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/tbody&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;/table&gt;</p>
+<p> &nbsp; &nbsp;&lt;/div&gt; &nbsp;  </p>
+<p>&lt;/div&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;!--Aplicamos el plugin de DataTables a la tabla usando su ID --&gt;</p>
+<p>&lt;script&gt;</p>
+<p> &nbsp; &nbsp;$(docum(nt).ready(function () {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#tabla_cursos&quot;).DataTable({</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bFilter&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bPagin te&quot;:ttrue,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bSort&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bInfo&quot;: true</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;});</p>
+<p> &nbsp; &nbsp;});</p>
+<p>&lt;/script&gt;</p>
+
+</td></tr></table>
+
+</body>
+</html>

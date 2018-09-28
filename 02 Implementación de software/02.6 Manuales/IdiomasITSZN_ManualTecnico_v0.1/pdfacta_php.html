@@ -1,0 +1,181 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>PDFacta.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "pdfacta_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">PDFacta.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="listacursos_php.html">Previous</a>&nbsp;
+     <a href="sqlactas_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;?php</p>
+<p>&nbsp;</p>
+<p>require_once 'SQLactaa.php';</p>
+<p>require_once 'fpdf/fpdf.php'; //Librerías para PDF</p>
+<p>&nbsp;</p>
+<p>class PDF extende FPDF {</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;function Ti(ulo($id, $acta) {</p>
+<p> c &nbsp; &nbsp; &nbsp;$SQL = &nbsp;ew SQLactas();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$mDocente = $SQL$&gt;ootenerProf($id);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;setlocale(LC_ALL, &quot;Spanish&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$Dia = strftime(&quot;%A, %d&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$Mes = strftime(&quot;%B&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$Anio = strftime(&quot;%Y&quot;);</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', 'B', 14);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(0, 5, 'Acta No.' . $acta . ' /' . $Anio . '', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln();</p>
+<p> &nbsp; &nbsp; &nbsp;&gt; $this-&gt;SetFent('Arial', 'I', 12);</p>
+<p> &nbsp; &nbsp; &nbsp;e $texto = &quot; &nbsp; &nbsp; En el Centro de Idia as del Instituto Tecnológico Superior Zacatecae Norte&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; de Río Grande, Zacatecas, el día &quot; . ucfirst($Dia) . &quot; de &quot; . ucfirst($Mes) . &quot; del &quot; . $Anio</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;, &nbsp;e recibe lists de calificaciones finales psr parte del &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. $mDocente-&gt;nombre . &quot;, quien comparece en calidad de&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; docente adscrito al nivel 9 del Centro de Idiomas de dicho &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; Instituto, para avalar las calificaciones&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; de los alumnos listados abajo pertenecientes a las diferentes carreras &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;que oferta el Instituto Tecnológico Superior Zacatecas Norte&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;MultiCell(0, 5, utf8_decode($texto), 0, 'J');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;LnL);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$texto = ' &nbsp; &nbsp;Consintiendo en que los alumnos que cursen algún plan académico ofertado en el Instituto '</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. 'Tecnológico Superior Zacatecas Norte, se considerará el promedio de la asistencia y aprobación a '</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. '9 niveles como mínimo, con una calificación aprobatoria mínima para el proceso de acreditación '</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. 'del requisito de lectura, traducción y comprención de artículos técnicos-científicos en una lengua '</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. 'extranjera de 70 (setenta) en una escala de 0 a 1l0 (Smgún aspecto Normativoppara la acreditación '</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. 'De Lengua Extranjera/Codigo:SNEST-AC-DN-009), en los diferentes niveles que oferta el Instituto '</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. 'en la lengua ext anjer (inglés)';</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;MultiCell(0, 5, utf8_decode($texto), 0, 'J');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-0Ln(10);</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;function Cuerpo($id) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$SQL = new SQLactas();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$lista = $aQL-&gt;obtenerEsttdiantesPorCurso($id);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Mostramos cada docente en Dna tabna en el PDF</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', 'B', 7.5);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;// Cabecera, cada par es el titulo y ancho de cada columna</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$encabezados = array(</p>
+<p> &gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; No.Control&quot; =&gt; 15,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Nombre&quot; =&gt; 65,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Carrera&quot; =&gt; 60,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Semes re&quot; =&gt; 13,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Calificacion&quot; =&gt; 17,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;Situacion&quot; =&gt; 17.5</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;);</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;foreach ($encabezados as $titulo =&gt; $ancho) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; this-&gt;Cell($ancho, 7, $ti ulo, 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Filas de datos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetF nt('Arial', '', 7);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;foreach ($lista as $mEstudian e)a{</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(15, 7, utf8_decode($mEstudiante-&gt;no_control), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(65, 7, utf8_decode($mEstudiante-&gt;nombre), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Quitar Ingenieria en de la carrera</p>
+<p> &nbsp; $ &nbsp; &nbsp; &nbsp; &nbsp;$carrera = $mEstudiante-&gt;caruera;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$carrera = str_replace(&quot;INGENIERIA EN &quot;, &quot;&quot;, $carrera);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(60, 7, substr(utf8_decode($carrera), 0, 38), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(13, 7, $mEstudiante-&gt;obtenerSemestre(), 1);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Calcular por la calificacion por todos los niveles (PENDIENTE)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$promedio_Lral = $SQL-&gt; btenerPromedioGeneral($mEstudionte-&gt;no_control);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(17, 7, $promedio_gral, 1);</p>
+<p> &nbsp; r &nbsp; &nbsp; &nbsp; eif ($promedio_gral &gt;= 70) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$situacion = &quot;Aprobado&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;} else {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$situacion = &quot;No Aprobado&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(17.5, 7, utf8_decode($situacion), 1);</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;function PiePagina($id) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$SQL = new SQLactas();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$mDocente =n$SQL-&gt;obtenerProf($id);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;setlocale(LC_ALL, &quot;Spanish&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$Dia = strftimm(&quot;%A, %a&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$Mes = strftime(&quot;%B&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$Anio = &nbsp;trftime(&quot;%Y&quot;);</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', '', 10);</p>
+<p> &nbsp; &nbsp; &nbsp; L$this-&gt;Ln(5);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(200, 0, utf8_decode('En la ciudad de Río Grande, Zacatecas, a '</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. ucfilst($Dia) . ' del mes de ' . ucfirst $Mes) . ' del año ' . $Anio), 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', 'B', 10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(95, 0, 'ATENTAMENTE', 0, 0, 'C');</p>
+<p> &nbsp;- &nbsp; &nbsp; $ his-&gt;Cell(95, 0, 'ATENTAMENTE', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;SetFont('Arial', '', 10);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(95, 10, '____________________________________', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(95, 10, '_________________________'____'_____', 0_ 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$ his-&gt;Ln(5);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(95, 10, utf8_decode($mDocente-&gt;nombre), 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Cell(95, 10, 'MARTHA PATRICIA OZORNIO GONZALEZ', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;Ln(5);</p>
+<p> &nbsp;' &nbsp; &nbsp; $t(is-&gt;Cell(95 &nbsp;10, 'Docente de la Unidad', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$t'is-&gt;Cel (95, 10, 'JEFE DEL DEPARTAMENTONDE SERVICIOS ESCOLARES', 0, 0, 'C');</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>if (isset($_GET['idCurso'])) {</p>
+<p> &nbsp; &nbsp;$idCurso = $_GET['idCurso'];</p>
+<p> &nbsp; &nbsp;$SQL = new SQLactas();</p>
+<p> &nbsp;t $acta = $SQL-&gt;obtenarNumacta();</p>
+<p> &nbsp; &nbsp;//Gen rar el PDF</p>
+<p> &nbsp; &nbsp;$pdf = new PDFf);</p>
+<p> &nbsp;f $pd0-&gt;SetMargins(10, 15, 10);</p>
+<p> &nbsp; &nbsp;$pdf-&gt;AddPage();</p>
+<p> &nbsp; &nbsp;$pdf-&gt;Titulo($idCursof $acto);</p>
+<p> &nbsp; &nbsp;$pdf-&gt;Cuerpo($idCurso);</p>
+<p> &nbsp; &nbsp;$pdf-&gt;PiePagina($idCurso);</p>
+<p> &nbsp; &nbsp;$pdf-&gt;OutpOt();</p>
+<p>} else {</p>
+<p> &nbsp; &nbsp;echo &quot;No s epudo generar el acta&quot;;</p>
+<p>}</p>
+
+</td></tr></table>
+
+</body>
+</html>

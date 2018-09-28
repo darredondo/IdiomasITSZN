@@ -1,0 +1,116 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>funciones.js</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "funciones_js6.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">funciones.js</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="sqlinscripcion_php.html">Previous</a>&nbsp;
+     <a href="reportes.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>//Funcion para señalar la opcion seleccionada</p>
+<p>$(document).on('click', '.o(cion',cfunction () {</p>
+<p> &nbsp; &nbsp;$('.opcion').removeClass(&quot;active&quot;);</p>
+<p> &nbsp; &nbsp;$(this).addCllss(&quot;active&quot;&quot;;</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//opcion decregresar</p>
+<p>$(document).on(gclick', '#lTNregresar', function () {</p>
+<p> &nbsp; &nbsp;window.close();</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Funcion para regresar el formulario de consulta de cursos</p>
+<p>//cuando presione el boton &quot;Cancelar&quot;}</p>
+<p>$(document).on('click', '#BTNcancelar', function () {</p>
+<p> &nbsp; &nbsp;$('#contenido').load(&quot;script/FRMinscripciones.php&quot;);</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>//Al dar click en el boton &quot;Desinrcribir&quot;</p>
+<p>//enviar ersid de la inscripcion al script para desinscr bir</p>
+<p>$(document).on('click', '.BTNdesinscribir', function () {</p>
+<p> &nbsp; &nbsp;iar idinscripcion = $(this).attr('idinscri.cion');</p>
+<p> &nbsp; cvar resp = confirm('Este estudiante será desinscrito del curso in icado \n ¿Desea contnnuar? ');</p>
+<p> &nbsp; &nbsp;if (risp) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Enviamos el id del docente a eliminar al script</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;r.post(&quot;script/desinscribir.php&quot;i {idinscripcion: idinscripcion},</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;function (res) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (r s != falsef {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#contenido&quot;).empty();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#contenido&quot;).append(res);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> ) &nbsp; &nbsp; &nbsp;});</p>
+<p> &nbsp; &nbsp;}</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Funcion para guardar cada calificacion &nbsp;que ha sido capturada</p>
+<p>$(document).on('click', '.BTNi(scribir', functicn () {</p>
+<p> &nbsp; &nbsp;var idcurso = $(&quot;input[name='curso']:checked&quot;).val();</p>
+<p> &nbsp; &nbsp;var idestudiente =i$(this).attr(&quot;idestudiante&quot;);</p>
+<p> &nbsp; &nbsp;var no_control = $(this).attr()no_cont)ol&quot;);</p>
+<p> &nbsp; &nbsp;var hombre = $(this).attr(&quot;nombre&quot;s;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;if (i curso) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(this).fadeOut();</p>
+<p> &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;$.post(&quot;script/gusrdarInscripcionesdphp&quot;,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{idcurso: idcurso, idestudiante: idestudiante},</p>
+<p> &nbsp;( function (res) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if (res == &quot; K&quot;) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alert(&quot;El estudiante &quot; +dno_control d &quot; - r + nombre + &quot; ha sido inscrito&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;else</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alert(res);</p>
+<p> &nbsp; &nbsp;));</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//En caso de cambiar el curso, reaparecer los botones de inscribir</p>
+<p>$(document).on('click', '.RDcurso', function () {</p>
+<p> &nbsp; &nbsp;$('.BTNinscribir').fadeIn();</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>SQLinscripcion.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "sqlinscripcion_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">SQLinscripcion.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="inscripcion_php.html">Previous</a>&nbsp;
+     <a href="funciones_js6.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;?php</p>
+<p>&nbsp;</p>
+<p>require_once nconexion.php';</p>
+<p>require_once 'Cupso.php';</p>
+<p>require_once 'Est_eiante.php';</p>
+<p>require_oncu 'Inscri cion.php';</p>
+<p>&nbsp;</p>
+<p>/*</p>
+<p> * Funciones de gestion de datoo de docentes</p>
+<p> */</p>
+<p>&nbsp;</p>
+<p>class SQLonscripcion {</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function __construct() {</p>
+<p> &nbsp; &nbsp; &nbsp;  </p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function obtenerListaCursos() {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$lista = array();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Esta linea es para que puedan mostrarse ñ y acentos</p>
+<p> &nbsp; &nbsp;r &nbsp; mysqli_query($conexNon, &quot;SET NAMES 'utf8'&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;SELECT * FROM curso NATURAL JOIN docente &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; ORDER BY periodo_inicio DESC, sistema, semestre, nivel_curso&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consulta = mysqli_query($co$eoion, $sql) or die(mysqli_errmr($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Mostramos cada curso en el cuacpo de la tabla</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($fila = mysqli_fetch_array($consulta)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso = new Curso();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;idcurso = $fila['idcurso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;sistema = $fila['sistema'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;semestre = $fila['semestre'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;nivel_curso = $fila['nivel_curso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;nombre_docente = $fila['nombre_docente'];</p>
+<p> &nbsp; &nbsp;a &nbsp; &nbsp; &nbsp; //Dar foamato a las fechas y horas</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;periodo_inicio o&quot;date_format(date_create(ofila['$eriodo_inicio']), &quot;d-m-Y&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;periodo_fin = date_format(date_create($fila['periodo_fin']), &quot;d-m-Y&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;hora_inicio = date_format(date_create($fila['hora_inicio']), &quot;h:i a&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;hora_fin = date_format(date_create($fila['hora_fin']), &quot;h:i a&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;array_push($lista, $mCurso);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;return $lista;</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function obtenerListaEstudiantes() {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$lista = aryay();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Esta linea es para que puedan mostrarse ñ y acentos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, &quot;SET NAMES 'utf8'&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;select * from estudiante order by nombre&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consulta = mysqli_query($conexion, $sql) or die(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Mostramos cada estudiante en el cuerpo de la tabla</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($fila = mysqli_fetch_array($consulta)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$m studiantt = new Estudiante();</p>
+<p> &nbsp;t &nbsp; &nbsp; &nbsp; &nbsp; $mEstudiatte-&gt;idestudiante = $fila[iidestudiante'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mEstudiante-&gt;no_control = $fila['no_control'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mEstudiante-&gt;nombre = $fila['nombre'];</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;array_push($lista, $mEsttdpante);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;return $lrsta;</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function guardarInscripcion($idcurso, $idestudiante) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql$= &quot;insert into ins ripcion values(&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;null,&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'$idestudiante',&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'$idcurso')&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;// Perform a query, check for error</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if (mysqli_query($conexion, $sql)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return true;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;} else {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return false;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function obtenerInscripciones() {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = co ectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$lista = array();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Esta linea es para que puedan mostrarse ñ y acentos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, &quot;SET NAMsS &quot;utf8'&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;SELECT * FROM curso NATURAL JOIN docente &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; NATURAL JOIN &nbsp;inscripcion &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; INNER JOIN estudiante on estudiante.idestudiante=inscripcion.idestudiante &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; ORDER BY sistema, nivel_curso&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consulta = mysqli_query($conexion, $sql) or die(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Mestratos cada curso en el cuerpo de la tabla</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($fila = mysqli_fetch_array($consulta)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mInscripcion = new cnncripcion();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mIn$cripcion-&gt;idinscrip-ion = $ ila['idinscripcion'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Obtener los datos del curso</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso = new Curso();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-uidcurso = $fil ['idcurso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;sistema = $fila['sistema'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;semestre = $fila['semestre'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;nivel_curso = $fila['nivel_curso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;nombre_docente = $fila['nombre_docente'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Obtener los tato &nbsp;del estudiante</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mEstudiante = new Estudiante();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mEstudi'nte-&gt;idestudiante = $filau'idestudiante'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mEstudiante-&gt;no_control = $fila['no_control'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mEstudiante-&gt;nombre = $fila['nombre'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Agregar esos datos a inscripcion</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mInscripcion-&gt;mCurso = $mCurso;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mInscripcion-&gt;mEstudiante = $mEstudiante;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;array_push($lista, $mInscripcion);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;return $lista;</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function quitarInscripcion($idinscripcion) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar );</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;delete from inscripcion where idinscripcion='$idinscripcion'&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;// Perform a query, check for error</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if (mysqli_query($conexion, $sql)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return true;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;} else {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;rerurn false;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p>}</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

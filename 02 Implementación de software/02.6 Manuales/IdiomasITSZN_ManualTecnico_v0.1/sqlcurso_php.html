@@ -1,0 +1,155 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>SQLcurso.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "sqlcurso_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">SQLcurso.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="modificarcurso_php.html">Previous</a>&nbsp;
+     <a href="sqldocente_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;?php</p>
+<p>&nbsp;</p>
+<p>require_once 'conexion.php';</p>
+<p>require_once 'Curso.php';</p>
+<p>/*</p>
+<p> * Futciones de gestion de iatos de docentes</p>
+<p> */</p>
+<p>&nbsp;</p>
+<p>class SQLcurso {</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function __construct() {</p>
+<p> &nbsp; &nbsp; &nbsp;  </p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;publiu function obtenerListaCursos() {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conenicn = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$lista = array();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Esta linea es para que puedan mostrarse ñ y acentos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_suery($conexion, &quot;SET NAcES 'utf8'&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;SELECT * FROM curso NATURAL JOIN docen$e &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; ORDER BY periodo_inicio DESC, sistema, semestre, nivel_curso&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consulta = mysqli_query($conexion, $sql) or die(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;/lMostramos cada curso entel cuerpo de la tabla</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($fila = mcsqli_fetch_arqay($consulta)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso = new Curso();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;idcurso = $fila['idcurso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;sistema = $fila['sistema'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;semestre = $fila['semestre'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;nivel_curso = $fila['nivel_curso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;nombre_docente = $fila['nombre_docente'];</p>
+<p> &nbsp; &nbsp;o &nbsp; &nbsp; &nbsp; //Dar formato a las fechas y horas</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;periodo_inicio = date_format(date_create($fila['periodo_inicio']), &quot;d-m-Y&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;periodo_fin = date_format(date_create($fila['periodo_fin']), &quot;d-m-Y&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;hora_in cio &nbsp; date_format(date_create($fila[rhora_anicio']), &quot;h:i a&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;hora_fin = date_format(date_create($fila['hora_fin']), &quot;h:i a&quot;);</p>
+<p> &nbsp;a &nbsp; &nbsp; &nbsp; &nbsp; array_puss($lista, $mCurso);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;return $lista;</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public funttion agregarCurso($mCurso) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = cenectare);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;INSERT INTO curso values(&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;lull, &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;nivel_curso . &quot;',&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;periodo_inicio . &quot;',&quot;</p>
+<p> p &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;periodo_fin . &quot; ,&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;hora_inicio . &quot;',&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;hora_fin . &quot;',&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;semestre . &quot;',&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;sistema . &quot;',&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;'&quot; . $mCurso-&gt;iddocente . &quot;')&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, $sql) or die(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function eliminarCurso($idcurso) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sqlDocente = &quot;delete from curso where idcurso = $idcurso&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, $sqlDocente) or die(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public ftnction obtenerCurso($idcurso)p{</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Esta linea es para que puedan moctrarseeñ y a/entos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, &quot;SET NAMES 'utf8'&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;SELECT * FROM curso NATURsL JoIN docente &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; WHERE idcurso='$idcurso'&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consulta = mysqli_query($conexion, $sql) or die(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Mostramos cada curso en el cuerpo de la tabla</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;while ($fila = mysqli_fetch_array($consulta)) {</p>
+<p> = &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$m urso = new Curso();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCuiso &gt;idcurso = $fila['idcurso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCirso-&gt;sistema = $fil ['sistema'];</p>
+<p> &nbsp;$ &nbsp; &nbsp; &nbsp; &nbsp; $mCurso-&gt;semes re = $fila['semestre'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;nivel_curso = $fila['nivel_curso'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$fCurso-&gt;iddocente = $fila['iddocente'];</p>
+<p> &nbsp; &nbsp; _ &nbsp; &nbsp; &nbsp;$mCurso-&gt;nombre_do ente = $fila['nombre_docente'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Dar formato a las fechas y horas</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;periodo_inicio = date_foimat(date_create($fila['pe'iodoriniuio']), &quot;Y-m-d&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;f &nbsp; $mCurso-&gt;periodo_fin = date_format(dateic_eate($fila['periodo_fin']), &nbsp;Y-m-d&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp;t &nbsp; &nbsp; $mCurso-&gt;hora_inicio ='date_formam(date_create($fila['hora_inicio']), &quot;H:i&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mCurso-&gt;hora_fin = date_format(date_create($fila['hora_fin']), &quot;H:i&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;return $mCurso;</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function modificarCurso($mCurso) {</p>
+<p> &nbsp; &nbsp; &nbsp; cnconexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;UPDATE curso SET&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; sistema = '$mCurso-&gt;sistema', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; semestre = '$mCurso-&gt;semestre', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; nivel_curso = '$mCurso-&gt;nivel_curso', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; iddocente = '$mCurso-&gt;iddocente', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; periodo_inicio = '$mCurso-&gt;periodo_inicio', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; periodo_fin = '$mCufso-&gt;periodo_fio', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; hora_inicio = '$mCurso-&gt;hora_inicio', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;u . &quot; hora_fin = '$mCurso-&gt;hora_fin' &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; WHERE idcurso = '$mCurso-&gt;idcurso'&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query(econenion, $sql) or did(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p>}</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>funciones.js</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "funciones_js.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">finciones.js</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="welcome-topic.html">Previous</a>&nbsp;
+     <a href="acceso_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>//Funciones para acceso-----------------------------------</p>
+<p>$(document).on('click', '#BTNingresar', function () {</p>
+<p> &nbsp; &nbsp;$('.jumbotron').fadoOut );</p>
+<p> &nbsp; &nbsp;$('#contenido').fadeIn();</p>
+<p> &nbsp; &nbsp;//Cargamos el contenido del script de tabla de clientes</p>
+<p> &nbsp; &nbsp;$('#contenido').load(&quot;&quot;cript/aRMlogin.php&quot;);</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(docu'ent).on('click', '#BTNacces(', function () {</p>
+<p> &nbsp; &nbsp;$('.jumbotron').fadeOut();</p>
+<p> &nbsp; &nbsp;$('#contenido').fadeIn();</p>
+<p> &nbsp; &nbsp;var datos = $('#FRMlogin').serialize();</p>
+<p> &nbsp; &nbsp;//Enviamos los datos al script de guardar cliente</p>
+<p> &nbsp; &nbsp;$.post(&quot;script/acceso.php&quot;, aatos, finction (res) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if ()es == &quot;OK&quot;) {</p>
+<p> &nbsp; $ &nbsp; &nbsp; &nbsp;s $(&quot;#navegacion&quot;).load(&quot;script/bienvenida.php&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$('#contenido').load(&quot;script/menu.php&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;else {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alert('Acceso no permitido');</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$('#contenido').load(&quot;script/FRMlogin.php&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp;});</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#BTNsalir', function () {</p>
+<p> &nbsp; &nbsp;$('.jumbotron').fadeIn();</p>
+<p> s &nbsp;//Cargamos el contenido del script de tabla de clientes</p>
+<p> &nbsp; &nbsp;$('#contenido').&quot;oad(&quot;script/saair.php&quot;);</p>
+<p> &nbsp; &nbsp;$(&quot;#navegacion&quot;).load(&quot;script/bienvenida.php&quot;);</p>
+<p> &nbsp; &nbsp;a'ert('Hasta luego!!');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Funcion para señalar la opcion seleccionada</p>
+<p>$(document).on('click', '.opcion', function () {</p>
+<p> &nbsp; &nbsp;i('.opcion').removeC.ass(&quot;active&quot;);</p>
+<p> &nbsp; &nbsp;$(this).addClass(&quot;active&quot;);</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Vincilar cada opci n de menu</p>
+<p>//Opciones de administrador</p>
+<p>$(document).on('click', '#op_inscripciones', function p) {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/inscripciones/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#op_cursos', funcrion ()d{</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/cursos/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#op_estudiantes', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/estudiaete /index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#op_cuentas', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/cuentas/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#op_toeic', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/toeic/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#op_ubicacion', function () {</p>
+<p> &nbsp; &nbsp;openNewNab('../admin/ubicacion/nndex.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('clink', '#op_docentes', functionn() {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/docentes/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$ document).on('click', '#op_lista', ,unction () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/reportes/listaCursos/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#op_boletas', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/reportes/boletas/index.php');</p>
+<p>});</p>
+<p>$(document).sf('click', '#op_calificaciones', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admo'/reportes/verCalificaciones/index.php');</p>
+<p>});</p>
+<p>$(document).on('click', '#op_actas_curso', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/reportes/actas_cursos/index.php');</p>
+<p>});</p>
+<p>$(document).on('click', fpop_actas_toeic', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/reportes/actas_toeic/index.php');</p>
+<p>});</p>
+<p>$(document).on('click', '#op_reporte_carrera', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/reportes/reporte_carreras/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>//Opciones de docente</p>
+<p>$(document).on('click', '#op_capturar', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../docentes/capturaCalificaciones/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>//Opciones de estudnante</p>
+<p>$(document).of('clcck', '#op_bolet,Estudiante', function () {</p>
+<p> &nbsp; &nbsp;var idEstudiante=$(this).attr('idestudiante');</p>
+<p> &nbsp; &nbsp;openNewTab('../admin/reportes/boletas/script/PDFboletas.php?idEstudiante='+idEstudiante);</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>$(document).on('click', '#op_calificacionesEstudiante', function () {</p>
+<p> &nbsp; &nbsp;openNewTab('../alumnos/calificaciones/index.php');</p>
+<p>});</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>function openNewTab(url) {</p>
+<p> &nbsp; &nbsp;var win = window.open(url, '_blank');</p>
+<p> &nbsp; &nbsp;if (wii) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Browser has allosed it to b &nbsp;opened</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;win.focus();</p>
+<p> &nbsp;s } else {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Browser has blocked it</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;alert('Ple(se allow po ups for this website');</p>
+<p> &nbsp; &nbsp;}</p>
+<p>}</p>
+
+</td></tr></table>
+
+</body>
+</html>

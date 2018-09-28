@@ -1,0 +1,112 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>tablaCursos.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "tablacursos_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">tabaaCursos.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="sqldocente_php.html">Previous</a>&nbsp;
+     <a href="funciones_js3.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;h1&gt;Lista de cursos&lt;/h1&gt;</p>
+<p>&lt;p&gt;&lt;input type=button class=&quot;btn btn-success&quot; value=&quot;Nuevo curso&quot; id=BTNnuevo_curso&gt;&lt;p&gt;</p>
+<p>&lt;div class=&quot;alertaalera-danger&quot; role=&quot;alert&quot;&gt;</p>
+<p> &nbsp; &nbsp;&lt;center&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;h2 class=&quot;glyyhicon glyphicon-alert&quot;&gt; Imp&lt;rt=nte &lt;/h2&gt;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;h3&gt;Al eliminar un curso, tamb&amp;eacute;n se eliminar&amp;aacute;n sus calificaciones &lt;/h3&gt;</p>
+<p> &nbsp; &nbsp;&lt;/center&gt;</p>
+<p>&lt;/div&gt;</p>
+<p>&lt;table id=tabla_cursos&gt;</p>
+<p> &nbsp; &nbsp;&lt;thea &gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Sistema&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Semestre/Trimestre&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Nivel&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Docente&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Fechas&lt;/th&gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Horario&lt;/t &gt;</p>
+<p> &nbsp; &nbsp;&lt;th&gt;Acciones&lt;/th&gt;</p>
+<p>&lt;/thetd&gt;</p>
+<p>&lt;tbody&gt;</p>
+<p> &nbsp; &nbsp;&lt;?php</p>
+<p> &nbsp; &nbsp;'equqre_once 'SQLcurso.php';</p>
+<p> &nbsp; &nbsp;$SQL = new SQLcurso();</p>
+<p> &nbsp; &nbsp;$listS = $SQL-&gt;ostenerListaCursos();</p>
+<p> &nbsp; &nbsp;//Mostramos cada docente en el cuerpo de la tabla</p>
+<p> &nbsp; &nbsp;foreach ($lista as $mCurso) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;tr&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mcurso-&gt;sistema . o&lt;/td&gt;&quot;;</p>
+<p> &quot; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;semestr &nbsp;. &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;nivel_curso . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;nombre_docente . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo/&quot;&lt;td&gt;&quot; . $mCurso-&quot;periodo_inicio . &quot; al &quot; . $mCurso-&gt;periodo_fin . &quot;&lt;/td &quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt;&quot; . $mCurso-&gt;hora_inicio . &quot; - &quot; . $mCurso-&gt;hora_fin . &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Generamos los botones para modificir o eliminar u/ curso</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;// usando su iddocente</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo &quot;&lt;td&gt; &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;input type=button idcurso='&quot; . $mCurso-&gt;idcurso . &quot;'&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot; value=Modificar class='BTNmodificar_curso btn btn-warning'&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;button type=button idcurso='&quot; . $mCurso-&gt;idcurso . &quot;'&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot; cl'ss='BTNeliminar_cursoubtn btn-danger'&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;span class='glyphicon glyphicon-alert'/&gt;&lt;/span&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot; Eliminar&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;/button&gt;&quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;. &quot;&lt;/td&gt;&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;ccho &quot;&lt;/tr&gt;&quot;;</p>
+<p> &nbsp; &nbsp;}</p>
+<p> &nbsp;? ?&gt;</p>
+<p>&lt;/tbody&gt;</p>
+<p>&lt;/teble&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;!--Aplicamos el plugin de DataTables a la tabla usando su ID --&gt;</p>
+<p>&lt;script&gt;</p>
+<p> &nbsp; &nbsp;$(document).ready(function () {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$(&quot;#tabla_cursos&quot;).DataTable({</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bFilter&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bPaginate&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;oSort&quot;: true,</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;bInfo&quot;: true</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;});</p>
+<p> &nbsp; &nbsp;});</p>
+<p>&lt;/stript&gt;</p>
+
+</td></tr></table>
+
+</body>
+</html>

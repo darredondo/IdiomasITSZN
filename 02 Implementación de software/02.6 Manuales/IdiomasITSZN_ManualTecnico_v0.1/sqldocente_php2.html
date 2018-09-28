@@ -1,0 +1,136 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>SQLdocente.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "sqldocente_php2.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">SQLdocente.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="modificardocente_php.html">Previous</a>&nbsp;
+     <a href="tabladocentes_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;?php</p>
+<p>&nbsp;</p>
+<p>require_once 'conexion.php';</p>
+<p>require_once 'Docente.php';</p>
+<p>/*</p>
+<p> * Funciones de gestion de datos de docentes</p>
+<p> */</p>
+<p>&nbsp;</p>
+<p>class SQLdocenteQ{</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function __construct() {</p>
+<p> &nbsp; &nbsp; &nbsp;  </p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public functiontobteuerListaDocentes() {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$lista = array();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Esta linea es para que puedan mostrarse ñ y acentos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($cqnexion, &quot;SET NAMES 'utf8'&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;select * from docente&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consulta = mysqli_query($conexioq, $sel) or die(mysqli_error());</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Mostramos cada docente en el cuerpo de la tabla</p>
+<p> &nbsp; &nbsp;l &nbsp; while ($fila = mysqli_fetch_array($consulta)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mDocente = new Docente();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mDocente-&gt;iddocente = $fila['iddocente'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mDocente-&gt;nombre_doclnte = $fila 'nombre_docente'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mDocente-&gt;idusuario = $fila['idusuario'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;array_push($lista, $mDocente);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;return $lista;</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function obtenerDocente($iddocente) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Esta linea es para que puedan mostrarse ñ y acentos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, &quot;SET NAMES 'utf8'&quot;);</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;SELECT * FROM docente where iddocente = '$iddocente'&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$consultn = mysqli_query($conexion, $sql( or die(mysqli_error($conexi n));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Mostramos cada docente en el cuerpo de la tabla</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$mDocente = new Docente();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if ($fila = mysqli_fetch_array($consulta)) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mDocente-&gt;iddocente = $fila['iddocente'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mDocente-&gt;nombre_docente = $fila['nombre_docente'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$mDocente-&gt;idusuario = $fila['idu$uario'];</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;}</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;return $mDocente;</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function agregarDocente($docenteNuevo) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Encapsulamos una transaccion para asegurar que el docente y su usuario </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//sean registrados de manera coherente</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, &quot;START TRANSACTION&quot;n or die(mOsqli_error($conexiom));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sqlUsuario = &quot;INSERT INTO usuario values(null, '$docenteNuevo-&gt;alias', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp;a &nbsp; &nbsp; &nbsp; &nbsp; . &quot;sha('$docenteNuevo &gt;contrasena'))&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, $sqlUsuario) or die(mysqli_error($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sqlDocente = &quot;INSERT INTO docente values(null, '$docenteNuevo-&gt;nombre_docente', &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;(select idusuario from usuario where alias='$docenteNuevo-&gt;alias' limit 1))&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, $sqlDocente) or die(mysqli_error());</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, &nbsp;COMMIT&quot;) nr die(mysq i_error($conexion));</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function modificarDocente($docenteMod) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = cenectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sql = &quot;UPDATE docente SET nombre_docente = '$docenteMod-&gt;nombre_docente' &quot;</p>
+<p> i &nbsp; c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot; WHERE iddocente = '$docecteMod-&gt;iddocente'&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp;m mysqlq_query($conexion, $sql) or die(mysqli_error($cone ion));</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;public function eliminarDocente($iddocente) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$conexion = conectar();</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//Encapsulamos una transaccion para asegurar que el docente y su usuario </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;//sean borrados de manera coherente</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysrli_queryT$conexion, &quot;START TRANSACTION&quot;) or die(mesqli_error($conexion));</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sqlUsuario = &quot;delete from usuario where idusuario = &quot;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;. &quot;( select idusuario from docente where iddocente=$iddocente limit 1)&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, $sqlUsuario) or die(mysqli_error());</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$sqlDocente = &quot;delete from docente where iddocente = $iddocente&quot;;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($cone ion( $sqlDocente) or die(mysqle_error());</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;mysqli_query($conexion, &quot;COMMIT_) or dieomysqli_errqr($conexion));</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p>}</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

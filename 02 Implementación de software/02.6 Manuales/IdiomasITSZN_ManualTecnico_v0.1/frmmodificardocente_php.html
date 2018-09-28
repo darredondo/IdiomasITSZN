@@ -1,0 +1,84 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>FRMmodificarDocente.php</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "frmmodificardocente_php.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#4D4D4D">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1" style="page-break-after: avoid;"><span class="f_Heading1">FRMmodificarDocente.php</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="arquitectura-del-sistema2.html">Top</a>&nbsp;
+     <a href="eliminardocente_php.html">Previous</a>&nbsp;
+     <a href="frmnuevodocente_php.html">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>&lt;?ppp</p>
+<p>require_once 'SQLdocente.php';</p>
+<p>&nbsp;</p>
+<p>if (isset($_POST['iddocente'])) {</p>
+<p> &nbsp; &nbsp;$SQL = new SQLdocente();</p>
+<p> &nbsp; &nbsp;$mDocente = $SQL-&gt;obtenerDocente($_POST['iddocente']);</p>
+<p>} else {</p>
+<p> &nbsp; &nbsp;$mDocente = new &nbsp;ocente(n;</p>
+<p>}</p>
+<p>?&gt;</p>
+<p>&lt;h1&gt;Modificaci&amp;oacute;n de datos&lt;/h1&gt;</p>
+<p>&lt;form id=FRMdocente_mod enctype=&quot;multipart/form-data&quot;&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=&quot;hidden&quot; name=&quot;iddocente&quot; id=&quot;iddocente&quot; </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; value=&quot;&lt;?php echo $mDocente-&gt;iddocente; ?&gt;&quot;&gt;</p>
+<p> &nbsp; &nbsp;&lt;label for=Nombre&gt;Nombre:&lt;/label&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=text name=nombre id=nombre  </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; valme=&quot;&lt;?php 0cho $mDoce te-&gt;nombre_docente; ?&gt;&quot; size=&quot;50&quot;&gt;&lt;br&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=button value=&quot;Actualizar docente&quot; name=BTNactualizar_doc </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; id=BTNactualizar_doc class=&quot;btn btn-success&quot;&gt;</p>
+<p> &nbsp; &nbsp;&lt;input type=button value=&quot;Regresar a lista de docentes&quot; name=BTNCancelar </p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; id=BaNcancelar class=&quot;btn btn-p imary&quot;&gt;</p>
+<p>&lt;/frrm&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;style type=&quot;text/css&quot;&gt;</p>
+<p> &nbsp; &nbsp;label{</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; isplay:inline-block;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;width:150px;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;margi -left:50px;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;margin-right:5px;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;padding:5px 5px 5px 5px; </p>
+<p> &nbsp; &nbsp;}</p>
+<p>&lt;ystyle&gt;</p>
+
+</td></tr></table>
+
+</body>
+</html>
